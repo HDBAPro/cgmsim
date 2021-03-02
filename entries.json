@@ -1,0 +1,113 @@
+[
+  {
+    "_id": "603e254fd3fe12f2393b4e05",
+    "enteredBy": "Boss",
+    "eventType": "Meal Bolus",
+    "insulin": 4,
+    "created_at": "2021-03-02T11:30:00.000Z",
+    "utcOffset": 0,
+    "carbs": null
+  },
+  {
+    "_id": "603e256dd3fe12f2393b5a81",
+    "enteredBy": "Boss",
+    "eventType": "Announcement",
+    "notes": "detemir 14",
+    "created_at": "2021-03-02T09:45:00.000Z",
+    "utcOffset": 0,
+    "isAnnouncement": true,
+    "carbs": null,
+    "insulin": null
+  },
+  {
+    "_id": "603cde8ad3fe12f23994f62a",
+    "enteredBy": "Boss",
+    "eventType": "Correction Bolus",
+    "insulin": 3,
+    "created_at": "2021-03-01T12:20:00.000Z",
+    "utcOffset": 0,
+    "carbs": null
+  },
+  {
+    "_id": "603cd58bd3fe12f2398f864e",
+    "enteredBy": "Boss",
+    "eventType": "Announcement",
+    "notes": "glargin 22",
+    "created_at": "2021-03-01T09:52:00.000Z",
+    "utcOffset": 0,
+    "isAnnouncement": true,
+    "carbs": null,
+    "insulin": null
+  },
+  {
+    "_id": "603cd239d3fe12f2398d5e05",
+    "enteredBy": "Boss",
+    "eventType": "Announcement",
+    "notes": "detemir 14",
+    "created_at": "2021-03-01T07:38:00.000Z",
+    "utcOffset": 0,
+    "isAnnouncement": true,
+    "carbs": null,
+    "insulin": null
+  },
+  {
+    "_id": "603b7a0dd3fe12f239bf6bee",
+    "enteredBy": "Boss",
+    "eventType": "Meal Bolus",
+    "carbs": 25,
+    "created_at": "2021-02-28T10:09:00.000Z",
+    "utcOffset": 0,
+    "insulin": null
+  },
+  {
+    "_id": "603b799cd3fe12f239bf3c24",
+    "enteredBy": "Boss",
+    "eventType": "Announcement",
+    "notes": "detemir 15",
+    "created_at": "2021-02-28T09:07:00.000Z",
+    "utcOffset": 0,
+    "isAnnouncement": true,
+    "carbs": null,
+    "insulin": null
+  },
+  {
+    "_id": "603a7b5bd3fe12f2394aba3e",
+    "enteredBy": "Boss",
+    "eventType": "Meal Bolus",
+    "carbs": 20,
+    "insulin": 1,
+    "created_at": "2021-02-27T17:03:23.220Z",
+    "utcOffset": 0
+  },
+  {
+    "_id": "603a604ad3fe12f2393f99ba",
+    "enteredBy": "Boss",
+    "eventType": "Announcement",
+    "notes": "detemir 12",
+    "created_at": "2021-02-27T15:07:54.169Z",
+    "utcOffset": 0,
+    "isAnnouncement": true,
+    "carbs": null,
+    "insulin": null
+  },
+  {
+    "_id": "603a5fa7d3fe12f2393f5c32",
+    "enteredBy": "Boss",
+    "eventType": "Snack Bolus",
+    "insulin": 3,
+    "created_at": "2021-02-27T15:05:11.545Z",
+    "utcOffset": 0,
+    "carbs": null
+  },
+  {
+    "_id": "6038fa34d3fe12f239913123",
+    "absorptionTime": 240,
+    "eventType": "Meal Bolus",
+    "carbs": 30,
+    "created_at": "2021-02-26T13:39:54.000Z",
+    "enteredBy": "loop://iPhoneSE (Lorenzo)",
+    "timestamp": "2021-02-26T13:39:54Z",
+    "utcOffset": 0,
+    "insulin": null
+  }
+]

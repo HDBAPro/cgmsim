@@ -1,0 +1,117 @@
+[
+  {
+    "_id": "603e266bd3fe12f2393bbea3",
+    "sgv": 94.84255750849772,
+    "type": "sgv",
+    "direction": "Flat",
+    "date": 1614685802937,
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:50:03.047Z",
+    "mills": 1614685802937
+  },
+  {
+    "_id": "603e2606d3fe12f2393b9561",
+    "sgv": 156,
+    "date": 1614685570000,
+    "dateString": "2021-03-02T11:46:10.000Z",
+    "trend": 4,
+    "direction": "Flat",
+    "device": "share2",
+    "type": "sgv",
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:46:10.000Z",
+    "mills": 1614685570000
+  },
+  {
+    "_id": "603e253ed3fe12f2393b438c",
+    "sgv": 95.0177570914532,
+    "type": "sgv",
+    "direction": "Flat",
+    "date": 1614685502802,
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:45:02.900Z",
+    "mills": 1614685502802
+  },
+  {
+    "_id": "603e24d9d3fe12f2393b16ac",
+    "sgv": 151,
+    "date": 1614685270000,
+    "dateString": "2021-03-02T11:41:10.000Z",
+    "trend": 4,
+    "direction": "Flat",
+    "device": "share2",
+    "type": "sgv",
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:41:10.000Z",
+    "mills": 1614685270000
+  },
+  {
+    "_id": "603e2413d3fe12f2393aca08",
+    "sgv": 95.19419773043,
+    "type": "sgv",
+    "direction": "Flat",
+    "date": 1614685203773,
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:40:03.864Z",
+    "mills": 1614685203773
+  },
+  {
+    "_id": "603e23add3fe12f2393a9f1c",
+    "sgv": 144,
+    "date": 1614684970000,
+    "dateString": "2021-03-02T11:36:10.000Z",
+    "trend": 4,
+    "direction": "Flat",
+    "device": "share2",
+    "type": "sgv",
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:36:10.000Z",
+    "mills": 1614684970000
+  },
+  {
+    "_id": "603e22e7d3fe12f2393a50c7",
+    "sgv": 95.37316040180576,
+    "type": "sgv",
+    "direction": "Flat",
+    "date": 1614684903538,
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:35:03.632Z",
+    "mills": 1614684903538
+  },
+  {
+    "_id": "603e2281d3fe12f2393a2755",
+    "sgv": 142,
+    "date": 1614684670000,
+    "dateString": "2021-03-02T11:31:10.000Z",
+    "trend": 4,
+    "direction": "Flat",
+    "device": "share2",
+    "type": "sgv",
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:31:10.000Z",
+    "mills": 1614684670000
+  },
+  {
+    "_id": "603e21bbd3fe12f23939da10",
+    "sgv": 95.55372619747523,
+    "type": "sgv",
+    "direction": "Flat",
+    "date": 1614684603511,
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:30:03.601Z",
+    "mills": 1614684603511
+  },
+  {
+    "_id": "603e2155d3fe12f23939b2e5",
+    "sgv": 143,
+    "date": 1614684370000,
+    "dateString": "2021-03-02T11:26:10.000Z",
+    "trend": 4,
+    "direction": "Flat",
+    "device": "share2",
+    "type": "sgv",
+    "utcOffset": 0,
+    "sysTime": "2021-03-02T11:26:10.000Z",
+    "mills": 1614684370000
+  }
+]
