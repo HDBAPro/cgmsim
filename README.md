@@ -15,7 +15,7 @@ d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), wh
 
 Modeling the activity of mealtime insulins
 =========================================
-This has been done has been done extensively for aspart, lispro and glulisine, and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose. I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these are variable needed for and used by the mathematical model, and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
+This has been done has been done extensively for aspart, lispro and glulisine, and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these are variable needed for and used by the mathematical model, and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
 
 
 Modeling the activities of the long-acting agonists
@@ -64,3 +64,19 @@ y = 2*Math.sqrt(bb*(1+z)); // where y is the activity of glargine over time
 Here is a visual aid illustrating the differences between the activity curves of detemir and glargine at different doses:
  
 ![image](https://user-images.githubusercontent.com/18611419/109794249-5745fe00-7c1e-11eb-9d94-839c4a34d706.png)
+
+
+Mechanics of the simulator
+==========================
+I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean, but any physical or virtual computer will do).
+
+Inputs for every category (virtual mealtime insulins, virtual meals) are declared using Careportal. Long acting or "basal" insulin agonists must be declared as "announcements", and in the text field the correct insulin product and dose are to be declared using the following format: "detemir 15" or "glargin 26" (without quotes).
+
+The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the announcements". 
+
+Since I have about no idea how to coden this correctly (grin), I arbitrarily decided to retain only 5 latest mealtime insulin doses. Since the DIA of mealtime insulins is set at 300 minutes or 5 hours, it is unlikely that a simulator user will enter more than 5 doses of mealtime insulin (boluses) during this time. The activity of each bolus is computed separately and a total activity of last 5 boluses is determined.
+
+For basal insulins, I take into account 3 latest declared doses, so that in case of irregular detemir use, I am still able to compute the activity of the "oldest" dose (more than 24 hours agoa) if necessary. Also, the activity of each dose is computed separately and all activities are added.
+
+...
+
