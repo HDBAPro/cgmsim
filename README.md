@@ -38,11 +38,11 @@ However, when increasing the do dose from 12U @0.4U/kg to 24U @0.4U/kg, you can 
 ![image](https://user-images.githubusercontent.com/18611419/109794111-3382b800-7c1e-11eb-92b6-b04351691c5f.png)
 
 
-Duration of Levemir action = 16 + (20*U/weight)
-So for 0.1 U/kg, the duration of action is 16+(20*0.1) = 18 hours, and for 0.4U/kg, the DIA is 16+(20*0.4) = 24 hours.
+Duration of Levemir action = 16 + (20 * U/weight)
+So for 0.1 U/kg, the duration of action is 16+(20 * 0.1) = 18 hours, and for 0.4U/kg, the DIA is 16+(20 * 0.4) = 24 hours.
 
 And the model itself is:
-y= units*(Math.PI/(duration*2))*(Math.sin(time*Math.PI/duration));
+y= units * (Math.PI/(duration * 2)) * (Math.sin(time * Math.PI/duration));
 
 Modeling Glargine (Lantus®, Abasaglar®, Toujeo®)
 ================================================
@@ -51,16 +51,16 @@ For the time being, only glargine U100 is basically modeled here, with a DIA of 
 ![image](https://user-images.githubusercontent.com/18611419/109794202-4c8b6900-7c1e-11eb-9c47-69054578e68f.png)
 
 I “chopped” the equation in little bits fo clarity :
-b = (2*basalDose)/(Math.PI*duration);  // duration is 27 hours
-x = (Date.now() - time0)/(60*60*1000); //time0 is the time of injection
-g = x-(duration/2);
+b = (2 * basalDose)/(Math.PI * duration);  // duration is 27 hours
+x = (Date.now() - time0)/(60 * 60 * 1000); //time0 is the time of injection
+g = x-(duration / 2);
 gg = Math.pow(g,2);
-h = duration/2;
+h = duration / 2;
 hh= Math.pow(h,2);
-z = (x-gg)/hh;
+z = (x-gg) / hh;
 bb = Math.pow(b,2);
 
-y = 2*Math.sqrt(bb*(1+z)); // where y is the activity of glargine over time
+y = 2 * Math.sqrt(bb * (1+z)); // where y is the activity of glargine over time
 
 
 Here is a visual aid illustrating the differences between the activity curves of detemir and glargine at different doses:
