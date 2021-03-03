@@ -1,4 +1,3 @@
-# cgmsim
 CGM trace generator 
 ===================
 This little application is simulating in an extremely basic way the effects food and insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout as an input and visualization method.
@@ -14,10 +13,14 @@ c)	This tool does not (yet) model the effect of exercise.
 
 d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), while basal insulins are meant to be injected once or twice a day, and hence have a much longer duration of activity. 
 
-Modeling the activity of mealtime insulin activities (aspart, lispro and glulisine) has been done extensively, and the model provided here :
-(https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 )
+Modeling the activity of mealtime insulins
+=========================================
+This has been done has been done extensively for aspart, lispro and glulisine, and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose. I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these are variable needed for and used by the mathematical model, and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
 
-Modeling the activities of the long-acting agonists detemir and glargine instead, is still lacking. Based on clamp studies in T1D, the intra-individual, day-to-day variation is an important factor affecting the predictability of a single repeated dose. Moreover, the inter-individual variability makes modeling a challenge. Even with the best curve-fitting tools, no “global model” was achieved.
+
+Modeling the activities of the long-acting agonists
+===================================================
+For detemir and glargine instead, models are still lacking. Based on clamp studies in T1D, the intra-individual, day-to-day variation is an important factor affecting the predictability of a single repeated dose. Moreover, the inter-individual variability makes modeling a challenge. Even with the best curve-fitting tools, no “global model” was achieved.
 
 Since the goal is not to make a perfect model, I decided to use a sinusoidal curve to model detemir, and a half-ellipse for glargine. The obvious reasons are that the mathematics are simple. 
 
