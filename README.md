@@ -1,3 +1,5 @@
+THIS WILL NEED SOME FORMATTING, sorry for the mathematical formulas in their current state ! 
+
 CGM trace generator 
 ===================
 This little application is simulating in an extremely basic way the effects food and insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout as an input and visualization method.
