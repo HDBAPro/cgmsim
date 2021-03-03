@@ -68,7 +68,7 @@ Here is a visual aid illustrating the differences between the activity curves of
 
 Mechanics of the simulator
 ==========================
-I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean, but any physical or virtual computer will do).
+I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean, but any physical or virtual computer will do). So its an bot bot collecting data from Nightscout, and uploading data back to Nightscout. The CGMSIM user doesn't have to use any other software or hardware, only a working Nightscout website with the Careportal plugin installed.
 
 Inputs for every category (virtual mealtime insulins, virtual meals) are declared using Careportal. Long acting or "basal" insulin agonists must be declared as "announcements", and in the text field the correct insulin product and dose are to be declared using the following format: "detemir 15" or "glargin 26" (without quotes).
 
