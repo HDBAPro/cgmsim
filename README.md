@@ -2,7 +2,8 @@ THIS WILL NEED SOME FORMATTING, sorry for the mathematical formulas in their cur
 
 CGM trace generator 
 ===================
-This little application is simulating in an extremely basic way the effects food and insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout as an input and visualization method.
+This application is simulating in an extremely basic way the effects food and insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout (NS) as an input and visualization method.
+
 Since even accurate physiological simulators can at best provide only an approximation of what happens in a biological organism, the goal is not even to try to match reality, but to provide a tool helping to visualize the fluctuations of glucose sensor values in response to various insulin analogs and food. 
 The simulation can be used as a learning and practicing tool, with a goal of keeping the CGM curve values as much of possible in certain range. The target range is 3.9 – 10 mmol/l or 70-180 mg/dl, and the target Time In Range (TIR) is 70%.
 
@@ -85,17 +86,28 @@ While this is absolutely neither true nor realistic, for the time being the EGP 
 The EGP is significantly affected but the insulin activity, since in the repleted rested state, insulin decreases the liver glucose production more than it increases the peripheral glucose uptake. Moreover other factor like the ingestion of alcohol will significantly decrease the EGP, which could be simple modeled in the future.
 
 
+Modeling exercise
+=================
+Exercise modeling is not part of the project yet.
+
+Random effects
+==============
+No random effect are yet coded, but in a biological environment, a certain imprecision should be anticipated and taken into account. It can affect the absorption of mealtime and basal insulins (timing and amounts), as well as the absorption of carbs. 
+
+
 Mechanics of the simulator
 ==========================
 I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean, but any physical or virtual computer will do). So it is an realtime bot collecting insulin and food entries from Nightscout, and uploading sensor glucose values (SGV) data back to Nightscout. The CGMSIM user doesn't have to use any other software or hardware, only a working Nightscout website with the Careportal plugin installed.
 
 Inputs for every category (virtual mealtime insulins, virtual meals) are declared using Careportal. Long acting or "basal" insulin agonists must be declared as "announcements", and in the text field the correct insulin product and dose are to be declared using the following format: "detemir 15" or "glargin 26" (without quotes).
 
-The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the announcements". 
+The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
 
-Since I have about no idea how to coden this correctly (grin), I arbitrarily decided to retain only 5 latest mealtime insulin doses. Since the DIA of mealtime insulins is set at 300 minutes or 5 hours, it is unlikely that a simulator user will enter more than 5 doses of mealtime insulin (boluses) during this time. The activity of each bolus is computed separately and a total activity of last 5 boluses is determined.
+Since I have about no idea how to code this correctly (grin), I arbitrarily decided to retain only 5 latest mealtime insulin doses. Since the DIA of mealtime insulins is set at 300 minutes or 5 hours, it is unlikely that a simulator user will enter more than 5 doses of mealtime insulin (boluses) during this time. The activity of each bolus is computed separately and a total activity of last 5 boluses is determined.
 
 For basal insulins, I take into account 3 latest declared doses, so that in case of irregular detemir use, I am still able to compute the activity of the "oldest" dose (more than 24 hours agoa) if necessary. Also, the activity of each dose is computed separately and all activities are added.
 
-...
+At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
+
+When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS.
 
