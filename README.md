@@ -109,5 +109,5 @@ For basal insulins, I take into account 3 latest declared doses, so that in case
 
 At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
 
-When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS.
+When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS every 5 minutes. No predition curves are computed or displayed.
 
