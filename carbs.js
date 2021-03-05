@@ -37,8 +37,9 @@ var timeSinceLastCarbs_min = timeSinceLastCarbs/(1000*60);
 console.log('time since last carbs in minutes: ',timeSinceLastCarbs_min);
 
 if ((timeSinceLastCarbs_min) < (carbAbsTime/2)) {
-    var carbrate = ((latestcarbs_g * 4 * timeSinceLastCarbs_min)/carbAbsTime);
-    var COB = (latestcarbs_g*2*Math.pow(timeSinceLastCarbs_min,2));
+    var AT2 = Math.pow(carbAbsTime,2);
+    var carbrate = (latestcarbs_g * 4 * timeSinceLastCarbs_min)/AT2;
+    var COB = (latestcarbs_g*2*Math.pow(timeSinceLastCarbs_min,2))/AT2;
     } else if ((timeSinceLastCarbs_min) >= (carbAbsTime/2)){
     var carbrate = (latestcarbs_g * 4 / carbAbsTime)*(1 -(timeSinceLastCarbs_min/carbAbsTime));
     var AAA = (4*latestcarbs_g/carbAbsTime);
