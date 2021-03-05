@@ -15,6 +15,7 @@ c)	This tool does not (yet) model the effect of exercise.
 
 d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), while basal insulins are meant to be injected once or twice a day, and hence have a much longer duration of activity. 
 
+
 Modeling the activity of mealtime insulins
 =========================================
 This has been done has been done extensively for aspart, lispro and glulisine, and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these are variable needed for and used by the mathematical model, and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
@@ -25,6 +26,7 @@ Modeling the activities of the long-acting agonists
 For detemir and glargine instead, models are still lacking. Based on clamp studies in T1D, the intra-individual, day-to-day variation is an important factor affecting the predictability of a single repeated dose. Moreover, the inter-individual variability makes modeling a challenge. Even with the best curve-fitting tools, no “global model” was achieved.
 
 Since the goal is not to make a perfect model, I decided to use a sinusoidal curve to model detemir, and a half-ellipse for glargine. The obvious reasons are that the mathematics are simple. 
+
 
 Modeling Levemir (Levemir®)
 ============================
@@ -43,6 +45,7 @@ So for 0.1 U/kg, the duration of action is 16+(20 * 0.1) = 18 hours, and for 0.4
 
 And the model itself is:
 y= units * (Math.PI/(duration * 2)) * (Math.sin(time * Math.PI/duration));
+
 
 Modeling Glargine (Lantus®, Abasaglar®, Toujeo®)
 ================================================
@@ -66,6 +69,20 @@ y = 2 * Math.sqrt(bb * (1+z)); // where y is the activity of glargine over time
 Here is a visual aid illustrating the differences between the activity curves of detemir and glargine at different doses:
  
 ![image](https://user-images.githubusercontent.com/18611419/109794249-5745fe00-7c1e-11eb-9d94-839c4a34d706.png)
+
+
+Modeling the absorption of Carbs from the gut
+=============================================
+
+There are many complicated and more or less precise published models of carb absorption, but for the purpose of this simulation, a simple bilinear model like the one found in the book "Think Like a Pancreas" by Gary Scheiner, and used in Percetus' Glycodyn simulator will do for now. https://github.com/Perceptus/GlucoDyn/blob/master/basic_math.pdf 
+
+
+Modeling the Endogenous Glucose Production (EGP) by the liver
+=============================================================
+
+While this is absolutely neither true nor realistic, for the time being the EGP is modeled as a linear function of time. It equivalents to 10g of absorbed carbs/hour, so depending on the user's insulin sensitivity factor (ISF, mmol/l/U) and carb ratio (CR, g/U), an the EGP effect is EGP * ISF * CR expressed in mmol/l/g. 
+
+The EGP is significantly affected but the insulin activity, since in the repleted rested state, insulin decreases the liver glucose production more than it increases the peripheral glucose uptake. Moreover other factor like the ingestion of alcohol will significantly decrease the EGP, which could be simple modeled in the future.
 
 
 Mechanics of the simulator
