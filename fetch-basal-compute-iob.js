@@ -1,4 +1,5 @@
 //from file (string) to object or json array
+
 const entries = require('./entries.json');
 const notes = entries.filter(e => e.notes).map(e => ({ notes: e.notes, time: e.created_at, enteredBy: e.enteredBy}));
 const datanotes = JSON.stringify(notes, null, 4);
@@ -31,12 +32,12 @@ console.log('----------------');
 //use moment.js to convert a date format from ISO 8601 to UNIX timestamp
 // y will be the time of last basal in UNIX format
 var moment = require('moment'); // require
-var y = moment(latestnote).format("x");
+let y = moment(latestnote).format("x");
 console.log('time of last basal in ISO format: ',latestnote);
 console.log('time of last basal in timestamp format: ',y);
 console.log('time right now: ', Date.now());
 
-var timeSinceLastBasal = Date.now() - y;
+var timeSinceLastBasal = (Date.now() - y);
 console.log('time since last basal in mills: ',timeSinceLastBasal);
 var timeSinceLastBasal_min = timeSinceLastBasal/(1000*60*60);
 console.log('time since last basal in hours: ',timeSinceLastBasal_min);
@@ -59,7 +60,7 @@ if (basalType.includes('det'))
 const { pi } = require("mathjs");
 const weight = 70;
 // let the duration be a linear function of dose/weight;
-const duration = 16 + (20*basalDose/weight);
+const duration = (16 + (20*basalDose/weight))*60;
 console.log('dose/kg is :', (basalDose/weight).toFixed(2),'U/kg');
 const ISF = 1.5; //(mmol/l/U)
 let time0 = y;
@@ -68,21 +69,17 @@ const { number } = require("mathjs");
     if (!Date.now) {
     Date.now = function() { return new Date().getTime(); }
     }
+
+{
+//var x = (Date.now() - timeSinceLastBasal)/(60*60*1000);
+var basalActivity = basalDose*(Math.PI/(duration*2))*(Math.sin(timeSinceLastBasal_min*60*Math.PI/duration));
+
+}
+console.log('dose:',basalDose, 'duration in min:', duration, 'duration in h:',(duration/60), 'since injection:',timeSinceLastBasal, 'time since injection in hours:', timeSinceLastBasal_min, 'basal detemir activity:',basalActivity);
+
+}
+
     
-//timestamp in milliseconds;
-console.log (Date.now())
-// x will be the time since injection in hours
-
-// compute activity only for the duration time, so it wont' get negative !!
-
-if (timeSinceLastBasal < duration) {
-let x = (Date.now() - y)/(60*60*1000);
-// idet is the impact of detemir, or activity of detemir;
-let basalActivity = basalDose*(Math.PI/(duration*2))*(Math.sin(x*Math.PI/duration));
-let basalImpact = -basalActivity*ISF;
-console.log('dose: ',basalDose, 'duration: ', duration, 'time since injection: ',x, 'basal detemir activity: ',basalActivity,'BG impact of basal detemir: ',basalImpact);
-}}  
-
     else
 
 {
@@ -120,13 +117,27 @@ let bb = Math.pow(b,2);
 
 if (timeSinceLastBasal < duration) {
 // the insulin activity is glargine 100 is:
-let basalActivity = 2*Math.sqrt(bb*(1+z));
-// the BG impact of glargine is:
-let basalImpact = -basalActivity * ISF;
+var basalActivity = 2*Math.sqrt(bb*(1+z));
 
 results = {
     time0: y,
-    igla100: basalActivity,
-}};
+    basalActivity: basalActivity,
+}
+
 console.log('time now is:', Date.now(), ', time at injection was:', y, 'b is:',b, ', x (elapsed time) is:', x,'hours, and z is: ',z, ', the activity of basal glargine now is:', basalActivity, ' and BG impact og gbasal glargine:',basalImpact,'mmol/l/h'); 
-    }
+    };
+};
+
+
+
+if (basalActivity > 0) {
+    var basalActivity = basalActivity;
+} else {basalActivity = 0};
+var basalActivityString = JSON.stringify(basalActivity);
+console.log('one last time after the negative value is reduced to 0: the basal activity of dose a is:',basalActivity)
+fs.writeFile("latest_basal.json", basalActivityString, function(err, result) {
+if(err) console.log('error', err);
+});
+
+
+
