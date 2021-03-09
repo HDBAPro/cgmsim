@@ -1,3 +1,5 @@
+SOME files are not included here, as the code is being updated elsewhere first. Be patient  :)
+
 THIS WILL NEED SOME FORMATTING, sorry for the mathematical formulas in their current state ! 
 
 CGM trace generator 
