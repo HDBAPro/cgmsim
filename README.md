@@ -57,13 +57,21 @@ For the time being, only glargine U100 is basically modeled here, with a DIA of 
 ![image](https://user-images.githubusercontent.com/18611419/109794202-4c8b6900-7c1e-11eb-9c47-69054578e68f.png)
 
 I “chopped” the equation in little bits fo clarity :
+
 b = (2 * basalDose)/(Math.PI * duration);  // duration is 27 hours
+
 x = (Date.now() - time0)/(60 * 60 * 1000); //time0 is the time of injection
+
 g = x-(duration / 2);
+
 gg = Math.pow(g,2);
+
 h = duration / 2;
+
 hh= Math.pow(h,2);
+
 z = (x-gg) / hh;
+
 bb = Math.pow(b,2);
 
 y = 2 * Math.sqrt(bb * (1+z)); // where y is the activity of glargine over time
