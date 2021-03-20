@@ -28,3 +28,13 @@ var resultDetAct = lastDetemirs.reduce(function(tot, arr) {
   },0);
 
 console.log(resultDetAct);
+
+
+const fs = require('fs');
+const DetAct = JSON.stringify(resultDetAct, null, 4);
+fs.writeFile('last_detemir_aggrACT.json', DetAct, (err) => {
+    if (err) {
+        throw err;
+    }
+    console.log("aggregated DET activity is now is saved as JSON.");
+  });

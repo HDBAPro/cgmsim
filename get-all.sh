@@ -10,6 +10,7 @@ node basal-det.js;
 node basal-gla.js;
 node detemir.js;
 node glargine.js;
+node all_insulin.js;
 
 
 : '

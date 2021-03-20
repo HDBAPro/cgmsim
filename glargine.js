@@ -32,3 +32,12 @@ var resultGlaAct = lastGlargines.reduce(function(tot, arr) {
   },0);
 
 console.log(resultGlaAct);
+
+const fs = require('fs');
+const GlaAct = JSON.stringify(resultGlaAct, null, 4);
+fs.writeFile('last_glargine_aggrACT.json', GlaAct, (err) => {
+    if (err) {
+        throw err;
+    }
+    console.log("aggregated GLA activity is now is saved as JSON.");
+  });
