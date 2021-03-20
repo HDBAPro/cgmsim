@@ -115,13 +115,11 @@ The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json"
 
 The activities of the various insulins are computed separately. 
 
-- First I call computeBolusIOB.js, which parses entries.json into an object with dates, then computes the activity of each bolus according to the time since injection. At the end it calculates the current aggregated activity of the boluses and this is written into the file last_mealtime.json.
+- First I call *computeBolusIOB.js*, which parses entries.json into an object with dates, then computes the activity of each bolus according to the time since injection. At the end it calculates the current aggregated activity of the boluses and this is written into the file *last_mealtime.json*.
 
-- Next I call computeBasalIOB.js, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: last_detemir.json and last_glargine.json.
+- Next I call *computeBasalIOB.js*, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: *last_detemir.json* and *last_glargine.json*.
 
-The detemir.js and glargine.js scripts calculate the current aggregated activity of each basal insulin separately.
-
-For basal insulins, I take into account 3 latest declared doses, so that in case of irregular detemir use, I am still able to compute the activity of the "oldest" dose (more than 24 hours agoa) if necessary. Also, the activity of each dose is computed separately and all activities are added.
+The *detemir.js* and *glargine.js* scripts calculate the current aggregated activity of each basal insulin separately.
 
 At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
 
