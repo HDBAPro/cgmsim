@@ -111,7 +111,7 @@ I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean
 
 Inputs for every category (virtual mealtime insulins, virtual meals) are declared using Careportal. Long acting or "basal" insulin agonists must be declared as "announcements", and in the text field the correct insulin product and dose are to be declared using the following format: "detemir 15" or "glargin 26" (without quotes).
 
-The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
+The first bash script (_*get-all.sh*_) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
 
 The activities of the various insulins are computed separately. 
 
