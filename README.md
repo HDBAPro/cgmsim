@@ -119,7 +119,9 @@ The activities of the various insulins are computed separately.
 
 - Next I call __*computeBasalIOB.js*__, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: *__last_detemir.json__* and *__last_glargine.json__*.
 
-The *__detemir.js__* and *__glargine.js__* scripts calculate the current aggregated activity of each basal insulin separately.
+The *__detemir.js__* and *__glargine.js__* scripts calculate the current aggregated activity of each basal insulin separately, and write them to *__last_detemir_aggrACT.json__* and *__last_glargine_aggrACT.json__*.
+
+Finally the script *__all_insulin.js__* calls the json files storing the aggregated activities of the mealtime insulin boluses, the detemir and glargine doses, and computes the global current insulin activity (variable: globalInsulinAct), which is expressed in U/min. 
 
 At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
 
