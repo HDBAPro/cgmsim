@@ -4,10 +4,16 @@ curl -H "Accept: application/json" -H "Content-Type: application/json" https://d
 
 curl -H "Accept: application/json" -H "Content-Type: application/json" https://dmpkl-freeaps.herokuapp.com/api/v1/treatments/ | jq '.' > entries.json;
 
-node fetch-basal-compute-iob.js;
-node fetch-basalA-compute-iob.js;
-node fetch-basalB-compute-iob.js;
-node fetch-mealtime-compute-iob.js;
-node addition.js
-node carbs.js
+node computeBolusIOB.js;
+node computeBasalIOB.js;
+node basal-det.js;
+node basal-gla.js;
+node detemir.js;
+node glargine.js;
+
+
+: '
+node carbs.js;
+node addition.js;
+'
 

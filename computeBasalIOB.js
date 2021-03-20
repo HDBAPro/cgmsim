@@ -18,17 +18,17 @@ timeSinceBasalMin = basals.map(entry => ({ ...entry, time: (Date.now() - moment(
 console.log('this is the trimmed down insulin and time since injection data:',timeSinceBasalMin);
 
 let lastBasals = timeSinceBasalMin.filter(function (e) {
-    return e.time <= (36*60); // keep only the basals from the last 36 hours
+    return e.time <= 36; // keep only the basals from the last 36 hours
 });
 console.log('these are the last basals: ',lastBasals);
 
 let lastGLA = lastBasals.filter(function (e) {
-    return e.drug === 'gla'; // keep only the basals from the last 36 hours
+    return e.drug === 'gla'; // keep only the glas from the last 36 hours
 });
 console.log('these are the last glargines: ',lastGLA);
 
 let lastDET = lastBasals.filter(function (e) {
-    return e.drug === 'det'; // keep only the basals from the last 36 hours
+    return e.drug === 'det'; // keep only the dets from the last 36 hours
 });
 console.log('these are the last detemirs: ',lastDET);
 
@@ -50,3 +50,4 @@ fs.writeFile('last_glargine.json', datagla, (err) => {
     }
     console.log("JSON glargine data is saved.");
 });
+

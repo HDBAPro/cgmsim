@@ -1,7 +1,9 @@
  
 require('json.date-extensions');
 JSON.useDateParser();
- 
+
+const fs = require('fs');
+
 const entries = require('./entries.json');
 var json = JSON.stringify(entries);
 var date2 = JSON.parseWithDate(json);
@@ -49,3 +51,13 @@ var resultIob = lastInsulins.reduce(function(tot, arr) {
   },0);
 
 console.log(resultAct,resultIob);
+
+
+const dataMealtimearr = [resultAct,resultIob];
+const dataMealtime = JSON.stringify(dataMealtimearr, null, 4);
+fs.writeFile('last_mealtime.json', dataMealtime, (err) => {
+  if (err) {
+      throw err;
+  }
+  console.log("JSON mealtime insulin data is saved.");
+});
