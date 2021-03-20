@@ -111,15 +111,15 @@ I run the software on a Ubuntu 20.04 virtual machine (a droplet on Digital Ocean
 
 Inputs for every category (virtual mealtime insulins, virtual meals) are declared using Careportal. Long acting or "basal" insulin agonists must be declared as "announcements", and in the text field the correct insulin product and dose are to be declared using the following format: "detemir 15" or "glargin 26" (without quotes).
 
-The first bash script (_*get-all.sh*_) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
+The first bash script (__*get-all.sh*__) first calls the "*entries.json*" and "*sgv.json*" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
 
 The activities of the various insulins are computed separately. 
 
-- First I call *computeBolusIOB.js*, which parses entries.json into an object with dates, then computes the activity of each bolus according to the time since injection. At the end it calculates the current aggregated activity of the boluses and this is written into the file *last_mealtime.json*.
+- First I call __*computeBolusIOB.js*__, which parses *entries.json* into an object with dates, then computes the activity of each bolus according to the time since injection. At the end it calculates the current aggregated activity of the boluses and this is written into the file __*last_mealtime.json*__.
 
-- Next I call *computeBasalIOB.js*, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: *last_detemir.json* and *last_glargine.json*.
+- Next I call __*computeBasalIOB.js*__, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: *__last_detemir.json__* and *__last_glargine.json__*.
 
-The *detemir.js* and *glargine.js* scripts calculate the current aggregated activity of each basal insulin separately.
+The *__detemir.js__* and *__glargine.js__* scripts calculate the current aggregated activity of each basal insulin separately.
 
 At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
 
