@@ -113,7 +113,13 @@ Inputs for every category (virtual mealtime insulins, virtual meals) are declare
 
 The first bash script (get-all.sh) first calls the "entries.json" and "sgv.json" using the Nightscout API, every 5 minutes. From the entries, I identify the (mealtime) insulins and meals, as well as the "announcements", containing data about basal insulins (product and dose). 
 
-Since I have about no idea how to code this correctly (grin), I arbitrarily decided to retain only 5 latest mealtime insulin doses. Since the DIA of mealtime insulins is set at 300 minutes or 5 hours, it is unlikely that a simulator user will enter more than 5 doses of mealtime insulin (boluses) during this time. The activity of each bolus is computed separately and a total activity of last 5 boluses is determined.
+The activities of the various insulins are computed separately. 
+
+- First I call computeBolusIOB.js, which parses entries.json into an object with dates, then computes the activity of each bolus according to the time since injection. At the end it calculates the current aggregated activity of the boluses and this is written into the file last_mealtime.json.
+
+- Next I call computeBasalIOB.js, which parses the entries into an object with dates again, but writes the detemir and glargine entries into 2 separate files: last_detemir.json and last_glargine.json.
+
+The detemir.js and glargine.js scripts calculate the current aggregated activity of each basal insulin separately.
 
 For basal insulins, I take into account 3 latest declared doses, so that in case of irregular detemir use, I am still able to compute the activity of the "oldest" dose (more than 24 hours agoa) if necessary. Also, the activity of each dose is computed separately and all activities are added.
 
