@@ -1,0 +1,6 @@
+
+*/5 * * * * /bin/bash /root/get-all.sh
+*/5 * * * * /bin/bash /root/upload.sh
+*/5 * * * * /bin/bash /root/upload-cgmsim.sh
+0 0 * * *   /bin/bash /root/perlin.sh
+
