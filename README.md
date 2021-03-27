@@ -123,7 +123,7 @@ The *__detemir.js__* and *__glargine.js__* scripts calculate the current aggrega
 
 Finally the script *__all_insulin.js__* calls the json files storing the aggregated activities of the mealtime insulin boluses, the detemir and glargine doses, and computes the global current insulin activity (variable: globalInsulinAct), which is expressed in U/min. 
 
-__20.03.2021__ : The sim is now coupled to __https://dmpkl1.herokuapp.com !__ A bash script retrieves the latest sgv (if exists!), and applies the insulin math above to compute the BG impact of insulin. It adds the BG impact of the liver (+1 mmol/l/h) and upload the new value every 5 minutes. No computation of "direction" for, it is WIP. The carbs section will be added soon. Notice that the insulin doses are input on a different NS instance, not on this one hahaa.  :)  
+__20.03.2021__ : The sim is now coupled to __https://dmpkl1.herokuapp.com !__ A bash __*sgv_start.sh*__ script retrieves the latest sgv (if exists!), and applies the insulin math above to compute the BG impact of insulin. It adds the BG impact of the liver (+1 mmol/l/h) and upload the new value every 5 minutes. No computation of "direction" for, it is WIP. The carbs section will be added soon. Notice that the insulin doses are input on a different NS instance, not on this one hahaa.  :)  
 
 At this stage, only the latest meal (amount of carbs and time of ingestion) are retrieved from the entries, and the carb absorption time is set to 180 min. This will be completed so that the apsorption time can be declared in Careportal and taken into account later.
 
