@@ -129,3 +129,10 @@ At this stage, only the latest meal (amount of carbs and time of ingestion) are 
 
 When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS every 5 minutes. No predition curves are computed or displayed.
 
+TODO list
+=========
+- detect and cumulate meals, not only latest meal entry
+- split big meals into 2 parts, slow and fast absorbing carbs
+
+- finalize "mayhem" hidden function  :)
+- centralise site-specific variables like NS URL, API_SECRET, ISF, etc  
