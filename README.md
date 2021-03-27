@@ -102,7 +102,7 @@ Exercise modeling is not part of the project yet.
 
 Random effects
 ==============
-Since random number generators produce very jumpy values, with various distributions between defined limits, I preferred a different approach. Using a one-dimensional perlin-noise generator, an array of 288 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme, and here: https://en.wikipedia.org/wiki/Perlin_noise.
+Since random number generators produce very jumpy values with various distributions between defined limits, I preferred trying a smoother noise function curve. Using a one-dimensional perlin-noise generator, an array of 288 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme. Every five minutes, as the next SGV value is computed, the latest perlin noise value in the last 5 minutes is taken into account.
 
 
 Mechanics of the simulator
