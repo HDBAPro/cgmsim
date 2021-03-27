@@ -102,7 +102,7 @@ Exercise modeling is not part of the project yet.
 
 Random effects
 ==============
-No random effect are yet coded, but in a biological environment, a certain imprecision should be anticipated and taken into account. It can affect the absorption of mealtime and basal insulins (timing and amounts), as well as the absorption of carbs. 
+Since random number generators produce very jumpy values, with various distributions between defined limits, I preferred a different approach. Using a one-dimensional perlin-noise generator, an array of 288 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme, and here: https://en.wikipedia.org/wiki/Perlin_noise.
 
 
 Mechanics of the simulator
@@ -134,5 +134,5 @@ TODO list
 - detect and cumulate meals, not only latest meal entry
 - split big meals into 2 parts, slow and fast absorbing carbs
 
-- finalize "mayhem" hidden function  :)
+- finalize perlin noise
 - centralise site-specific variables like NS URL, API_SECRET, ISF, etc  
