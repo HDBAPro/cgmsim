@@ -1,15 +1,18 @@
 var time = Date.now();
 console.log(time);
-var perlin = require('perlin-noise');
 
-var noise = perlin.generatePerlinNoise(17, 17);
-// noise is an array with length 17 * 17 = 289;
-//console.log(noise);
+var perlin = require('perlin-noise');
+var noise = perlin.generatePerlinNoise(17, 17), {
+    amplitude: 0.1,
+    octaveCount: 4,
+    persistence: 0.2,
+  });
+
 const myObject = [];
 var i = 0;
 for (i=0; i<noise.length; i++) {
     myObject.push(
-        {noise: noise[i], order: (i), time : time + (i)*1000*60*5})
+        {noise: noise[i]/10, order: (i), time : time + (i)*1000*60*5})
     }
 console.log(myObject); 
 

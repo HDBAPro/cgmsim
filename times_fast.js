@@ -59,8 +59,8 @@ var timeSincePerlin = perlValues.map(entry => ({ ...entry, time: (Date.now() - m
 let lastPerls = timeSincePerlin.filter(function (e) {
     return e.time >=0 && e.time <= 5; // keep only the latest noise value
 });
-console.log('this is the past perlin noise value:', lastPerls);
-console.log('this is the past perlin noise value:', lastPerls[0].noise);
+console.log('this is the last perlin noise value:', lastPerls);
+console.log('this is the last perlin noise value:', lastPerls[0].noise);
 
 // END OF PERLIN NOISE SECTION
 
@@ -84,7 +84,7 @@ var CGMcorr5 = (CGMcorr + 5);
 console.log (CGMcorr5.toFixed(2));
 
 // value of the sin function oscillating between 0 and 1, starting from 99 and ending in 99
-var sgv = ((CGMcorr + 5) * 18) + lastPerls[0].noise; 
+var sgv = ((CGMcorr + 5) * 18) + (lastPerls[0].noise * 18 *10); 
 console.log (sgv.toFixed());
 
 console.log ("When the time of day is " + hours.toFixed() + " hours and " + minutes.toFixed() + " minutes, the sinusoidal value of CGM is " + CGMcorr5.toFixed(1) +" mmol/l."); 
