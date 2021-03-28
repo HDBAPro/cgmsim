@@ -2,7 +2,7 @@ var time = Date.now();
 console.log(time);
 
 var perlin = require('perlin-noise');
-var noise = perlin.generatePerlinNoise(17, 17), {
+var noise = perlin.generatePerlinNoise(17, 17, {
     amplitude: 0.1,
     octaveCount: 4,
     persistence: 0.2,
