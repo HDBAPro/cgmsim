@@ -102,7 +102,7 @@ Exercise modeling is not part of the project yet.
 
 Random effects
 ==============
-Since random number generators produce very jumpy values with various distributions between defined limits, I preferred trying a smoother noise function curve. Using a one-dimensional perlin-noise generator, an array of 288 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme. Every five minutes, as the next SGV value is computed, the latest perlin noise value in the last 5 minutes is taken into account.
+Since random number generators produce very jumpy values with various distributions between defined limits, I preferred trying a smoother, more "organic" noise function curve. Using a one-dimensional perlin-noise generator, an array of 17 * 17 = 289 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each value gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme. Every five minutes, as the next SGV value is computed, the latest perlin noise value in the last 5 minutes is taken into account.
 
 
 Mechanics of the simulator
@@ -134,7 +134,13 @@ When all data about blood glucose (BG) increasing factors (carbs and EGP), as we
 TODO list
 =========
 - detect and cumulate meals, not only latest meal entry
+
 - split big meals into 2 parts, slow and fast absorbing carbs
 
-- finalize perlin noise
-- centralise site-specific variables like NS URL, API_SECRET, ISF, etc  
+- finalize the perlin noise function, octaves, amplitude and persistence settings
+
+- make liver function not linear
+
+- centralise site-specific variables like NS URL, API_SECRET, ISF, etc 
+
+- make a web server to see the compuations and set variables
