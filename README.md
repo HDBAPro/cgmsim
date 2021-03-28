@@ -4,24 +4,26 @@ THIS WILL NEED SOME FORMATTING, sorry for the mathematical formulas in their cur
 
 CGM trace generator 
 ===================
-This application is simulating in an extremely basic way the effects food and insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout (NS) as an input and visualization method.
+This application is simulating in an extremely basic way the effects food and various insulin analogs on continuous glucose monitor (CGM) curve in type 1 diabetes (T1D). It uses Nightscout (NS) as an input and visualization method.
 
 Since even accurate physiological simulators can at best provide only an approximation of what happens in a biological organism, the goal is not even to try to match reality, but to provide a tool helping to visualize the fluctuations of glucose sensor values in response to various insulin analogs and food. 
+
 The simulation can be used as a learning and practicing tool, with a goal of keeping the CGM curve values as much of possible in certain range. The target range is 3.9 – 10 mmol/l or 70-180 mg/dl, and the target Time In Range (TIR) is 70%.
 
 To understand the mechanics of such a simulation, just a few things must be considered.
+
 a)	The liver releases glucose into the bloodstream by either releasing its stores (glycogenolysis) or synthesizing new glucose from amino acids (gluconeogenesis). This is called the endogenous glucose production (EGP), and various biological states can affect it (not only alcohol!).
 
 b)	The ingestion of food and the digestion and absorption of carbohydrates will also increase the blood glucose. After a short delay, the CGM will reflect the increase of blood glucose.
 
 c)	This tool does not (yet) model the effect of exercise.
 
-d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), while basal insulins are meant to be injected once or twice a day, and hence have a much longer duration of activity. 
+d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), while basal insulins are meant to be injected once or twice a day, and hence have a much longer duration of activity. Both will lower blood glucose and thus sensor glucose values.
 
 
 Modeling the activity of mealtime insulins
 =========================================
-This has been done has been done extensively for aspart, lispro and glulisine, and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these are variable needed for and used by the mathematical model, and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
+This has been done has been done extensively for aspart, lispro (and glulisine), and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these settings may vary, but they are used by the mathematical model and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
 
 
 Modeling the activities of the long-acting agonists
@@ -142,5 +144,7 @@ TODO list
 - make liver function not linear
 
 - centralise site-specific variables like NS URL, API_SECRET, ISF, etc 
+
+- model exercise
 
 - make a web server to see the compuations and set variables
