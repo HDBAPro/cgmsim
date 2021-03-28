@@ -26,6 +26,39 @@ let globlalInsulinAct = globalBasalAct + globalMealtimeAct;
 
 let BGI_ins = globlalInsulinAct *ISF * -90;
 
+
+// here is the liver BG impact
+// 1 mmol/l/h is 0.083333 mmol/l/5 min
+var rnd = (Math.random() * (1.5 - 0.5) + 0.5);
+var liver_bgi = rnd * 0.0833;
+
+
+
+// here is the impact of the latest carbs meal
+const carbzz = require('./latest_carbs.json');
+var jsoncarbzz = JSON.stringify(carbzz);
+var carbs = JSON.parse(jsoncarbzz);
+console.log(carbs);
+
+
+const arrows = require('./arrows.json');
+var jsonArrows = JSON.stringify(arrows);
+var arrowValues = JSON.parse(jsonArrows);
+console.log(arrowValues);
+
+
+
+// create JSON
+var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+     };
+var dictstring = JSON.stringify(dict);
+
+var fs = require('fs');
+fs.writeFile("cgmsim-sgv.json", dictstring, function(err, result) {
+    if(err) console.log('error', err);
+});
+
+
 console.log('-------------------------------------------');
 console.log('glaAct:',glaAct,'detAct:',detAct,'total basal act:', globalBasalAct);
 console.log('-------------------------------------------');
@@ -34,24 +67,16 @@ console.log('-------------------------------------------');
 console.log('total insulin activity:',globlalInsulinAct);
 
 console.log('-------------------------------------------');
-console.log('total BG impact of insulin for 5 minutes:',BGI_ins);
+console.log('total BG impact of insulin for 5 minutes:',BGI_ins,'mg/dl');
+console.log('total BG impact of insulin for 5 minutes:',BGI_ins/18,'mmol/l');
 
-// here is the liver BG impact
-// 1 mmol/l/h is 0.083333 mmol/l/5 min
-var liver_bgi = 0.0833;
+console.log('-------------------------------------------');
+console.log('total BG impact of liver for 5 minutes: +',liver_bgi,'mmol/l');
 
+console.log('-------------------------------------------');
+console.log('total BG impact of carbs for 5 minutes: +',carbs,'mmol/l');
 
-
-// create JSON
-var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18), "type" : "sgv", "direction": "Flat", "date" : Date.now(), 
-     };
-
-var dictstring = JSON.stringify(dict);
-
-var fs = require('fs');
-fs.writeFile("cgmsim-sgv.json", dictstring, function(err, result) {
-    if(err) console.log('error', err);
-});
-
+console.log('-------------------------------------------');
+console.log('total BG impact of carbs, liver and insulin for 5 minutes: +',(BGI_ins/18) + liver_bgi + carbs,'mmol/l');
 
 
