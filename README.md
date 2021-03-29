@@ -131,7 +131,7 @@ At this stage, only the latest meal (amount of carbs and time of ingestion) are 
 
 __27.03.2021__ : The perlin noise generator files are created, and noise values can be added (or not) to the end of the __*sgv_start.js*__ in order to simulate random smooth variation of SGV values.
 
-__28.03.2021__ : New feature: the SGV trend arrows are now evaluated from the mean delta of SGV values during the 3 previous 5 min intervals, and are incoporated into the __*sgv_start.js*__ script.
+__28.03.2021__ : New feature: the SGV trend arrows are now evaluated from the mean delta of SGV values during the 3 previous 5 min intervals, and are incoporated into the __*sgv_start.js*__ script. The thresholds need to be fixed.
 
 When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS every 5 minutes. No predition curves are computed or displayed.
 
@@ -141,7 +141,9 @@ TODO list
 
 - split big meals into 2 parts, slow and fast absorbing carbs
 
-- finalize the perlin noise function, octaves, amplitude and persistence settings
+- fix arrows
+
+- finalize the perlin noise function, octaves, amplitude and persistence settings. Too jumpy yet.
 
 - make liver function not linear
 
