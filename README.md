@@ -23,7 +23,7 @@ d)	Mealtime insulins have a short duration of activity (DIA -around 3 hours), wh
 
 Modeling the activity of mealtime insulins
 =========================================
-This has been done has been done extensively for aspart, lispro (and glulisine), and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 75 minutes and a DIA of 300 min. Please notice that these settings may vary, but they are used by the mathematical model and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
+This has been done has been done extensively for aspart, lispro (and glulisine), and the model provided here: (https://github.com/LoopKit/Loop/issues/388#issuecomment-317938473 ). This is the model I use to compute the activity of each mealtime insulin dose (called "bolus" from now on). I selected a peak time of 55 minutes and a DIA of 300 min. Please notice that these settings may vary, but they are used by the mathematical model and do not always reflect the perception of the duration of activity of a single dose. They can be easily modified in the code, should the user prefer a shorter time to peak, e.g. for faster aspart insulin Fiasp®.
 
 
 Modeling the activities of the long-acting agonists
