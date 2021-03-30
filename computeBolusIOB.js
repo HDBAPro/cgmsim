@@ -15,7 +15,7 @@ console.log('length',insulin.length) // returns the number of boluses or lenghth
 
 var dia = 5;
 var td = dia * 60;
-var tp = 75;
+var tp = 55;
 
 
 var tau = tp * (1 - tp / td) / (1 - 2 * tp / td);
