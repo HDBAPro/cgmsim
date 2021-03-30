@@ -48,8 +48,30 @@ console.log(arrowValues);
 
 
 
+// ADD FUNCTION PERLIN NOISE HERE
+
+const perls = require('./perlin.json');
+var jsonperls = JSON.stringify(perls);
+var perlValues = JSON.parse(jsonperls);
+var moment = require('moment'); 
+var timeSincePerlin = perlValues.map(entry => ({ ...entry, time: (Date.now() - moment(entry.time).valueOf())/(1000*60)}));
+//console.log(perlValues);
+//console.log(timeSincePerlin);
+
+let lastPerls = timeSincePerlin.filter(function (e) {
+    return e.time >=0 && e.time <= 5; // keep only the latest noise value
+});
+console.log('this is the last perlin noise value:', lastPerls);
+console.log('this is the last perlin noise value:', lastPerls[0].noise);
+
+// END OF PERLIN NOISE SECTION
+
+
+
+
+
 // create JSON
-var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *10), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
      };
 var dictstring = JSON.stringify(dict);
 
