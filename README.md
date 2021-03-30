@@ -104,7 +104,9 @@ Exercise modeling is not part of the project yet.
 
 Random effects
 ==============
-Since random number generators produce very jumpy values with various distributions between defined limits, I preferred trying a smoother, more "organic" noise function curve. Using a one-dimensional perlin-noise generator, an array of 17 * 17 = 289 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each value gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme. Every five minutes, as the next SGV value is computed, the latest perlin noise value in the last 5 minutes is taken into account. For now, the best settings are amplitude 0.3, octaves 1 and persistance 0.3. The values are multiplied by 10, and then again by 18 to get mg/dl, then added to the SGV jst before upload.
+Since random number generators produce very jumpy values with various distributions between defined limits, I preferred trying a smoother, more "organic" noise function curve. Using a one-dimensional perlin-noise generator, an array of 17 * 17 = 289 values __*(perlin.json)*__ is produced each night at midnight by __*perlin.js*__. Each value gets a timestamp in 5 minute increments. Read more about perlin noise here: https://github.com/andrewrk/node-perlin-noise#readme. 
+
+Every five minutes, as the next SGV value is computed, the latest perlin noise value in the last 5 minutes is taken into account. For now, the best settings are amplitude 0.3, octaves 1 and persistance 0.3. The values are multiplied by 10, and then again by 18 to get mg/dl, then added to the SGV jst before upload.
 
 
 Mechanics of the simulator
