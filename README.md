@@ -143,6 +143,8 @@ TODO list
 
 - fix arrows
 
+- use NS's profile for ISF 
+
 - finalize the perlin noise function, octaves, amplitude and persistence settings. Too jumpy yet.
 
 - make liver function not linear
@@ -151,4 +153,7 @@ TODO list
 
 - model exercise
 
-- make a web server to see the compuations and set variables
+- make a web server/HTML page to see the computations and set variables
+
+- simplify deployment
+- 
