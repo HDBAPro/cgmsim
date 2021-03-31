@@ -71,7 +71,7 @@ console.log('this is the last perlin noise value:', lastPerls[0].noise);
 
 
 // create JSON
-var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *10), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 * 2), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
      };
 var dictstring = JSON.stringify(dict);
 
