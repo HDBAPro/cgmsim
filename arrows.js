@@ -9,22 +9,29 @@ console.log('this is the mean SGV 5 min variation in the last 15 minutes:',sgvdi
 
 const arrows = [];
 
-if (sgvdir15min < -30) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "DoubleDown"}) 
-}  else if (sgvdir15min < -20) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "SingleDown"}) 
+if (sgvdir15min < -15) {
+    arrows.push ({sgvdir : sgvdir15min, direction : "DoubleDown"})
+
 }  else if (sgvdir15min < -10) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "FortyFiveDown"}) 
+    arrows.push ({sgvdir : sgvdir15min, direction : "SingleDown"})
+
+}  else if (sgvdir15min < -5) {
+    arrows.push ({sgvdir : sgvdir15min, direction : "FortyFiveDown"})
+
+}  else if (sgvdir15min < 5) {
+    arrows.push ({sgvdir : sgvdir15min, direction : "Flat"})
+
 }  else if (sgvdir15min < 10) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "Flat"}) 
-}  else if (sgvdir15min < 20) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "FortyFiveUp"}) 
-}  else if (sgvdir15min < 30) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "SingleUp"}) 
-}  else if (sgvdir15min >= 30) {
-    arrows.push ({sgvdir : sgvdir15min, direction : "DoubleUp"}) 
+    arrows.push ({sgvdir : sgvdir15min, direction : "FortyFiveUp"})
+
+}  else if (sgvdir15min < 15) {
+    arrows.push ({sgvdir : sgvdir15min, direction : "SingleUp"})
+
+}  else if (sgvdir15min >= 15) {
+    arrows.push ({sgvdir : sgvdir15min, direction : "DoubleUp"})
 };
 console.log(arrows);
+
 
 const dataarrows = JSON.stringify(arrows, null, 4);
 const fs = require('fs');
