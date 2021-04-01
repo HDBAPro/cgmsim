@@ -143,7 +143,7 @@ TODO list
 
 - split big meals into 2 parts, slow and fast absorbing carbs
 
-- fix arrows
+- set high / low CGM limits before upload
 
 - use NS's profile for ISF 
 
@@ -158,4 +158,4 @@ TODO list
 - make a web server/HTML page to see the computations and set variables
 
 - simplify deployment
-- 
+
