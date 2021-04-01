@@ -151,6 +151,8 @@ TODO list
 
 - make liver function not linear
 
+- simulate insulin pump
+
 - centralise site-specific variables like NS URL, API_SECRET, ISF, etc 
 
 - model exercise
