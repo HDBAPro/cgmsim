@@ -89,6 +89,8 @@ Modeling the absorption of Carbs from the gut
 
 There are many complicated and more or less precise published models of carb absorption, but for the purpose of this simulation, a simple bilinear model like the one found in the book "Think Like a Pancreas" by Gary Scheiner, and used in Percetus' Glycodyn simulator will do for now. https://github.com/Perceptus/GlucoDyn/blob/master/basic_math.pdf . For the time being, only the latest meal is taken into account, with an absorption tmie of 180min. No cumulative effects and only one absorption curve.
 
+To make the absorption of carbs from meals more realistic, I divided each meal in fast and slow absorbing carbs. The ratio of fast absorbing carbs is randomly computed to be 10-40% of the whole meal. In the current version of the algorithm, the fast carbs will be abosrbed according to the bilinear model mentioned above, in a period of time of one hour. The remaining (slow) carbs are absorbed over a period of 4 hours. 
+
 
 Modeling the Endogenous Glucose Production (EGP) by the liver
 =============================================================
@@ -134,6 +136,8 @@ At this stage, only the latest meal (amount of carbs and time of ingestion) are 
 __27.03.2021__ : The perlin noise generator files are created, and noise values can be added (or not) to the end of the __*sgv_start.js*__ in order to simulate random smooth variation of SGV values.
 
 __28.03.2021__ : New feature: the SGV trend arrows are now evaluated from the mean delta of SGV values during the 3 previous 5 min intervals, and are incoporated into the __*sgv_start.js*__ script. The thresholds need to be fixed.
+
+__02.04.2021__ : meals in the last six hours are now cumulated, and their fast and slow absorbing parts are taken into account, even for small amounts. The script __*all_meals.js*__ detects carbs from all entries, and creates the __*last_meals.json*__ file. This file is picked up by __*carbs.js*__ which computes the total carb absorption rate (in g/min).
 
 When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS every 5 minutes. No predition curves are computed or displayed.
 
