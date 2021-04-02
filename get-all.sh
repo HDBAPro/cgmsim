@@ -13,6 +13,7 @@ node basal-gla.js;
 node detemir.js;
 node glargine.js;
 node all_insulin.js;
+node all_meals.js
 node carbs.js;
 node arrows.js;
 
