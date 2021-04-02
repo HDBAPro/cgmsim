@@ -139,11 +139,12 @@ __28.03.2021__ : New feature: the SGV trend arrows are now evaluated from the me
 
 __02.04.2021__ : meals in the last six hours are now cumulated, and their fast and slow absorbing parts are taken into account, even for small amounts. The script __*all_meals.js*__ detects carbs from all entries, and creates the __*last_meals.json*__ file. This file is picked up by __*carbs.js*__ which computes the total carb absorption rate (in g/min).
 
+Limits to the SGV values have been placed at 40 mg/dl (2.2 mmol/l) and 400 mg/dl (22.2 mmol/l) in order to keep the SGV curves on the NS display when the simulator is left unattended for longer periods of time.
+
 When all data about blood glucose (BG) increasing factors (carbs and EGP), as well as BG decreasing factors (mealtime and basal insulins) are computed, their additive effect will be reflected in the sensor glucose value (sgv) uploaded to NS every 5 minutes. No predition curves are computed or displayed.
 
 TODO list
 =========
-- set high / low CGM limits before upload
 
 - use NS's profile for ISF 
 
