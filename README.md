@@ -143,10 +143,6 @@ When all data about blood glucose (BG) increasing factors (carbs and EGP), as we
 
 TODO list
 =========
-- detect and cumulate meals, not only latest meal entry
-
-- split big meals into 2 parts, slow and fast absorbing carbs
-
 - set high / low CGM limits before upload
 
 - use NS's profile for ISF 
