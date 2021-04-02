@@ -66,14 +66,23 @@ console.log('this is the last perlin noise value:', lastPerls[0].noise);
 
 // END OF PERLIN NOISE SECTION
 
+var limited_sgv = sgvValues[0].sgv;
 
+if (sgvValues[0].sgv >= 400) {
+     limited_sgv = 400;}
+    else if (sgvValues[0].sgv <=40) {
+      limited_sgv = 40;
+};
 
+var dict = {"sgv" : limited_sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *10), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+     };
+var dictstring = JSON.stringify(dict);
 
 
 // create JSON
-var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 * 2), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
-     };
-var dictstring = JSON.stringify(dict);
+// var dict = {"sgv" : sgvValues[0].sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *10), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+//      };
+// var dictstring = JSON.stringify(dict);
 
 var fs = require('fs');
 fs.writeFile("cgmsim-sgv.json", dictstring, function(err, result) {
