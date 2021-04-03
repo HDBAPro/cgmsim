@@ -146,7 +146,7 @@ When all data about blood glucose (BG) increasing factors (carbs and EGP), as we
 TODO list
 =========
 
-- use NS's profile for ISF 
+- use NS's profile for ISF, or from patient.json for static values
 
 - finalize the perlin noise function, octaves, amplitude and persistence settings. Too jumpy yet.
 
@@ -154,7 +154,7 @@ TODO list
 
 - simulate insulin pump
 
-- centralise site-specific variables like NS URL, API_SECRET, ISF, etc 
+- centralise site-specific variables like NS URL, API_SECRET, etc 
 
 - model exercise
 
