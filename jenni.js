@@ -87,22 +87,48 @@ console.log('current basal according to AutoSync profile', currentAutoSyncBasal)
 
 // let's detect the current basal from Temp Basals
 //================================================
-const k = tempBasals3[1];
-var tempBasalEnd = tempBasals3[1].mills + tempBasals3[1].duration * 60 * 1000;
-var tempBasal = tempBasals3[1].absolute;
+const k = tempBasals3[0];
+var tempBasalEnd = tempBasals3[1].mills + tempBasals3[0].duration * 60 * 1000;
+var tempBasal = tempBasals3[0].absolute;
 console.log('current Temp Basal entry:',k);
 
+
+
 // if a temp basal is set, override the AutoSync Basal 
-//================================================
+//====================================================
 if (Date.now() < tempBasalEnd) {
     var currentTempBasal = tempBasal;
-
 } else {
-
     currentTempBasal = currentAutoSyncBasal;
 };
+console.log('This is the final value for the basal rate now:',currentTempBasal);
 
-console.log('This is the final value for the basal rate now:',currentTempBasal)    
+
+// let's compute a delivery of 5 minutes of current basal, as if it were a 
+// bolus, then create an array of data similar to the "entries.json" file
+//========================================================================
+
+const basalAsBoluses = require('./basalAsBoluses.json');
+console.log('this is the retrieved jason:', basalAsBoluses);
+
+let value = { 'time': Date.now(), 'insulin' : currentTempBasal/12 }
+basalAsBoluses.unshift(value);
+console.log('new bolusAsBoluses to be saved', basalAsBoluses);
+
+const new_babValues = JSON.stringify(basalAsBoluses, null, 4);
+
+const fs = require('fs');
+fs.writeFile('basalAsBoluses.json', new_babValues, (err) => {
+    if (err) {
+        throw err;
+    }
+});
+
+
+
+
+
+
 
 
 
