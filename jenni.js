@@ -1,3 +1,7 @@
+// THANK YOU JENNI FOR LETTING ME USE YOUR NS DATA FOR DEVELOPING THIS SCRIPT !!!
+//===============================================================================
+
+
 const jenni_profile = require('./jenni_profile.json');
 const jenni_treatments = require('./jenni_treatments.json');
 
