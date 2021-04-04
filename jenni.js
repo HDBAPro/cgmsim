@@ -108,8 +108,12 @@ console.log('This is the final value for the basal rate now:',currentTempBasal);
 // bolus, then create an array of data similar to the "entries.json" file
 //========================================================================
 
-const basalAsBoluses = require('./basalAsBoluses.json');
-console.log('this is the retrieved jason:', basalAsBoluses);
+const basalAsBoluses_raw = require('./basalAsBoluses.json');
+console.log('this is the retrieved jason:', basalAsBoluses_raw);
+
+let basalAsBoluses = basalAsBoluses_raw.filter(function (e) {
+    return e.time >= (Date.now()-10800000); // only entries from the last 3 hours
+});
 
 let value = { 'time': Date.now(), 'insulin' : currentTempBasal/12 }
 basalAsBoluses.unshift(value);
