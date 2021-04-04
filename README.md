@@ -152,7 +152,7 @@ TODO list
 
 - make liver function not linear
 
-- simulate insulin pump
+- simulate insulin pump (jenni-project)
 
 - centralise site-specific variables like NS URL, API_SECRET, etc 
 
