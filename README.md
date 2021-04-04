@@ -152,7 +152,13 @@ TODO list
 
 - make liver function not linear
 
-- simulate insulin pump (jenni-project)
+- simulate insulin pump (Project "jenni"):
+    - get-jenni.sh retrieves the profile.json and treatments.json, and launches jenni.js
+    - jenni.js parses the files for default and autosync basals, then for temp basals.
+    - temp basals override autosync basals
+    - every 5 minutes the current basal is turned into a 5-minute dose recorded as a bolus in the basalAsBolus.json file
+    - entries older than DIA can be filtered out since they have no activity, andincrease the basalAsBolus.json size
+    - basalAsBolus.json is then processed as all other boluses and a total "BasalAsBolus" activity is computed.
 
 - centralise site-specific variables like NS URL, API_SECRET, etc 
 
