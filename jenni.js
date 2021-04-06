@@ -129,9 +129,33 @@ fs.writeFile('basalAsBoluses.json', new_babValues, (err) => {
 });
 
 
+var dia = 5;
+var td = dia * 60;
+var tp = 55;
+var tau = tp * (1 - tp / td) / (1 - 2 * tp / td);
+var a = 2 * tau / td;
+var S = 1 / (1 - a + (1 + a) * Math.exp(-td / tau));
 
+var activityContrib = 0;
+var moment = require('moment'); 
 
+let timeSincePumpAct = basalAsBoluses.map(entry => {
+    var t = (Date.now() - entry.time)*1000*60;
+    var dose = entry.insulin;
+    return { ...entry, time: t, activityContrib:  dose * (S / Math.pow(tau, 2)) * t * (1 - t / td) * Math.exp(-t / tau) };
+ });
 
+ console.log(timeSincePumpAct);
+
+ let lastPumpInsulins = timeSincePumpAct.filter(function (e) {
+    return e.time <= dia;
+});
+console.log('these are the last pump basal insulins and activities:',lastPumpInsulins);
+
+var resultPumpAct = lastPumpInsulins.reduce(function(tot, arr) { 
+    return tot + arr.activityContrib;
+  },0);
+console.log('this is the aggregated insulin activity from pump basal in the last dia hours:',resultPumpAct);
 
 
 
