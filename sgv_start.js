@@ -74,7 +74,7 @@ if (sgvValues[0].sgv >= 400) {
       limited_sgv = 40;
 };
 
-var dict = {"sgv" : limited_sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *10), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
+var dict = {"sgv" : Math.floor(limited_sgv + BGI_ins + (liver_bgi * 18) + (carbs * 18) + (lastPerls[0].noise * 18 *6)), "type" : "sgv", "direction": arrowValues[0].direction, "date" : Date.now(), 
      };
 var dictstring = JSON.stringify(dict);
 
